@@ -1,14 +1,18 @@
-const cacheName = 'v2';
-const cacheFiles = [
-  '/'
-];
+const cacheName = 'v1';
 
 self.addEventListener('install', async event => {
   console.log('Service Worker: Installed');
   
   const cache = await caches.open(cacheName);
   console.log('Service Worker: Caching Files');
-  await cache.addAll(cacheFiles);
+  await cache.addAll([
+    '/',
+    '/index.html',
+    '/Includes/css/row.css',
+    '/Includes/css/style.css',
+    '/Includes/images',
+    '/Includes/js/app.js'
+  ]);
 });
 
 self.addEventListener('fetch', async event => {
