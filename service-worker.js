@@ -14,7 +14,9 @@ self.addEventListener('install', async event => {
 
   const cache = await caches.open(cacheName);
   console.log('Service Worker: Caching Files');
-  await cache.addAll(cacheFiles);
+  cache.addAll(cacheFiles).catch(error => {
+    console.error('Service Worker: Failed to cache files', error);
+  });
 });
 
 self.addEventListener('fetch', async event => {
