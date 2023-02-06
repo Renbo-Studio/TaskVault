@@ -1,6 +1,6 @@
-const cacheName = 'v1';
+const cacheName = 'v2';
 const cacheFiles = [
-  '/index.html'
+  '/'
 ];
 
 self.addEventListener('install', async event => {
