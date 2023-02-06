@@ -1,6 +1,11 @@
 const cacheName = 'v1';
 const cacheFiles = [
-  '/',
+  '/includes/css/row.css',
+  '/includes/css/style.css',
+  '/includes/images/',
+  '/js/app.js',
+  '/service-worker.js ',
+  '/index.html',
   'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
 ];
 
