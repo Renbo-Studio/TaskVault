@@ -49,26 +49,40 @@
     <script>
       window.onload()
       {
-        enterFullScreen(window)
+        openFullscreen()
       }
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js').then(function() {
           console.log('Service Worker Registered');
         });
       }
-
-      function enterFullScreen(element) {
-        if(element.requestFullscreen) {
-            element.requestFullscreen();
-        }else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();     // Firefox
-        }else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();  // Safari
-        }else if(element.msRequestFullscreen) {
-            element.msRequestFullscreen();      // IE/Edge
-        }
-       };
     </script>
+    <script>
+        /* Get the documentElement (<html>) to display the page in fullscreen */
+        var elem = document.documentElement;
+        
+        /* View in fullscreen */
+        function openFullscreen() {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+          }
+        }
+        
+        /* Close fullscreen */
+        function closeFullscreen() {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+          }
+        }
+        </script>
     <script src="Includes/js/app.js"></script>
 </body>
 </html>
