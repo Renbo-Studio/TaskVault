@@ -3,14 +3,25 @@ let contentSpace = document.getElementById('contentSpace');
 
 Array.from(links).forEach(element => {
   element.addEventListener('click', function() {
-    const a =  element.href.split('#')[1] + '.html';
+    if (!element.classList.contains('page')) {
+      if(element.classList.contains('DataUnit'))
+      {
+        const contentClass = contentSpace.classList[0];
+        const a = 'pages/' + element.href.split('#')[1] + '.html';
+        const b = contentSpace;
+        setJustContent(a, b);
+        element.classList.add('activeUnit')
+        return
+      }
+    }
+
+    const a = 'pages/' + element.href.split('#')[1] + '.html';
     const b = contentSpace;
-    const x = element
-    setContent(a, b, x);
+    setContent(a, b);
   });
 });
 
-function setContent(a, b, x) {
+function setContent(a, b) {
   fetch(a)
     .then(response => {
       if (!response.ok) {
@@ -20,7 +31,25 @@ function setContent(a, b, x) {
     })
     .then(text => {
       b.innerHTML = text;
-      setActive(x)
+      b.className = "";
+      b.classList.add(a.split('/')[1].split('.')[0])
+      setActive(links, contentSpace);
+    })
+    .catch(error => {
+      console.error('Error loading content:', error);
+    });
+}
+
+function setJustContent(a, b) {
+  fetch(a)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`File ${a} not found`);
+      }
+      return response.text();
+    })
+    .then(text => {
+      b.innerHTML = text;
     })
     .catch(error => {
       console.error('Error loading content:', error);
@@ -28,37 +57,31 @@ function setContent(a, b, x) {
 }
 
 if (!contentSpace.textContent.trim()) {
-  const a = 'includes/page/_home.html';
+  const a = 'pages/_home.html';
   const b = contentSpace;
-  
+
   setContent(a, b);
 }
 
-function setActive(x) {
+function setActive(links, contentSpace) {
   Array.from(links).forEach(element => {
     if (element.classList.contains('active')) {
       element.classList.remove('active')
-  
+    }
+    if (element.classList.contains('activeUnit')) {
+      element.classList.remove('activeUnit')
     }
   });
 
+  // Get the class of the contentSpace
+  const contentClass = contentSpace.classList[0];
 
-  // Get the current URL
-  let currentURL = window.location.href;
-
-  // Split the URL by the hash symbol (#)
-  let urlSplit = currentURL.split('#');
-
-  // Check if the URL contains a hash symbol
-  if (urlSplit.length > 1) {
-    // If there is a hash symbol, get the part after the hash symbol
-    let urlHash = urlSplit[1];
-
+  // If the contentSpace is not empty
+  if (contentClass) {
     // Loop through the <a> tags
     Array.from(links).forEach(element => {
-      // Check if the href attribute of the <a> tag matches the URL hash
-      if (element.getAttribute('href') === '#' + urlHash) {
-        // If the href attribute matches the URL hash, set the active class to the <a> tag
+      // Check if the href attribute of the <a> tag matches the class of the contentSpace
+      if (element.getAttribute('href') === '#' + contentClass) {
         element.classList.add('active');
       }
     });

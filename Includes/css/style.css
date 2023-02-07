@@ -63,7 +63,6 @@ a
 a:hover
 {
     text-decoration: underline #81CFF0;
-    color: gray;
 }
 a.active
 {
@@ -83,7 +82,7 @@ a.active
 .meun:hover
 {
     cursor: pointer;
-    color: aqua;
+    font-size: 20px;
 }
 .btn-small
 {
@@ -105,7 +104,7 @@ a.active
 {
     border: 2px gray solid;
     border-radius: 14px;
-    width: 320px;
+    width: 90vw;
     display: block;
 }
 .tasks-top
@@ -120,7 +119,7 @@ a.active
 }
 .tasks-bottom
 {
-    padding: 13px 9px 1px 6px;
+    padding: 13px 9px 1px 0px;
 }
 .tasks-bottom2
 {
@@ -162,11 +161,18 @@ a.active
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.activeUnit
+{
+    background-color: #81CFF0;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
 
 
 /* Media Query */
 
-@media only screen and (min-width: 600px)
+@media only screen and (min-width: 800px)
 {
     .mobilize
     {
@@ -215,20 +221,31 @@ a.active
     {
         font-size: 15px;
     }
+    .con-4
+    {
+        padding-left: 1vw !important;
+    }
+    .tasks-card
+    {
+        border: 2px gray solid;
+        border-radius: 14px;
+        width: 22vw;
+        display: block;
+    }
     .overflow-slide::-webkit-scrollbar {
         width: 1px;
-        background-color: #F5F5F5;
+        background-color: #ebebeb;
     }
-     
+    
     .overflow-slide::-webkit-scrollbar-thumb {
         width: 1px;
-        background-color: #000000;
+        background-color: #e3e3e3;
     }
      
     .overflow-slide::-webkit-scrollbar-thumb:hover {
         width: 0.1px;
         height: 0.1px;
-        background-color: #81CFF0;
+        background-color: #cacaca;
     }
 }
 
@@ -338,10 +355,6 @@ a.active
 
 .b-5
 {
-    top: -5px;
+    top: -2px;
     position: relative;
 }
-
-
-
-
