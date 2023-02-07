@@ -4,6 +4,7 @@
 {
     font-family: Calibri;
     transition: all 200ms;
+    font-size: clamp(10px, 3.6vw, 19px) !important;
 }
 body
 {
@@ -104,7 +105,8 @@ a.active
 {
     border: 2px gray solid;
     border-radius: 14px;
-    width: 90vw;
+    width: 80vw;
+    height: auto;
     display: block;
 }
 .tasks-top
