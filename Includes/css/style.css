@@ -170,6 +170,15 @@ a.active
     border-radius: 8px;
     border: 1px solid black;
 }
+.profile
+{
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding: 25px !important;
+    height: 100%;
+    border-radius: 10px;
+}
 
 
 /* Media Query */
@@ -226,6 +235,7 @@ a.active
     .con-4
     {
         padding-left: 1vw !important;
+        padding-right: 1vw !important;
     }
     .tasks-card
     {
